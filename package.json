@@ -1,0 +1,17 @@
+{
+  "name": "codex-resets-ad-remover",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/static.test.mjs",
+    "test:live": "node --test tests/live-site.test.mjs",
+    "lint:firefox": "npx --yes web-ext lint --source-dir firefox",
+    "package": "node scripts/package.mjs",
+    "verify:packages": "node scripts/verify-packages.mjs",
+    "release:check": "npm test && npm run test:live && npm run lint:firefox && npm run package && npm run verify:packages"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

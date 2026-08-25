@@ -1,0 +1,13 @@
+/* Hide every sponsor surface currently rendered by codex-resets.com. */
+.sponsor-mobile,
+.sponsor-rail,
+.sponsor-dialog {
+  display: none !important;
+}
+
+/* The site narrows the tracker at this breakpoint to make room for ad rails. */
+@media (min-width: 1024px) and (max-width: 1343px) {
+  .sponsor-layout > .page {
+    width: 100% !important;
+  }
+}

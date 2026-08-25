@@ -1,0 +1,5 @@
+/dist/
+/.playwright-cli/
+/output/playwright/
+/web-ext-artifacts/
+.DS_Store
