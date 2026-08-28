@@ -13,6 +13,7 @@ const packageFiles = [
   "icons/icon-48.png",
   "icons/icon-96.png",
   "icons/icon-128.png",
+  "LICENSE",
 ];
 const expectedChecksums = [];
 
@@ -44,7 +45,9 @@ for (const project of ["chrome", "firefox"]) {
   assert.deepEqual(entries, packageFiles, `${archiveName} has unexpected files`);
 
   for (const file of packageFiles) {
-    const source = await readFile(path.join(root, project, file));
+    const source = await readFile(
+      file === "LICENSE" ? path.join(root, file) : path.join(root, project, file),
+    );
     const packaged = unzip(["-p", archive, file]);
     assert.equal(
       Buffer.compare(source, packaged),

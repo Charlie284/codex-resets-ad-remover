@@ -11,6 +11,27 @@ Each project has its own manifest, blocker stylesheet, icons, and installation
 guide. The extensions run only on `https://codex-resets.com/*`, execute no
 JavaScript, and request no browser API permissions.
 
+## Install manually
+
+### Chrome
+
+1. Download and extract the Chrome ZIP from the latest GitHub release, or clone
+   this repository.
+2. Open `chrome://extensions`.
+3. Enable **Developer mode** and select **Load unpacked**.
+4. Choose the extracted Chrome package or this repository's `chrome` directory.
+
+### Firefox and Zen Browser
+
+For a temporary development install, clone this repository, open
+`about:debugging#/runtime/this-firefox`, select **Load Temporary Add-on**, and
+choose `firefox/manifest.json`. Firefox and Zen remove temporary extensions when
+the browser closes.
+
+Persistent installation in standard Firefox and Zen builds requires a
+Mozilla-signed XPI. An unsigned Firefox ZIP in a GitHub release is source for
+testing and Mozilla signing; it is not a persistent installable add-on.
+
 ## Verify
 
 The checks require Node.js 18 or newer and have no package dependencies.
@@ -47,3 +68,7 @@ This creates versioned Chrome and Firefox ZIP files plus `SHA256SUMS.txt` in
 
 The extension does not collect, store, or transmit data. See
 [`PRIVACY.md`](PRIVACY.md) for the precise scope of that statement.
+
+## License
+
+Licensed under the [MIT License](LICENSE).

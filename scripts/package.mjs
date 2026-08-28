@@ -44,6 +44,18 @@ for (const project of ["chrome", "firefox"]) {
       throw new Error(result.stderr || `zip exited with status ${result.status}`);
     }
 
+    const licenseResult = spawnSync(
+      "zip",
+      ["-q", "-X", "-j", temporaryArchive, path.join(root, "LICENSE")],
+      { cwd: projectRoot, encoding: "utf8" },
+    );
+
+    if (licenseResult.status !== 0) {
+      throw new Error(
+        licenseResult.stderr || `zip exited with status ${licenseResult.status}`,
+      );
+    }
+
     await rename(temporaryArchive, finalArchive);
     archives.push(finalArchive);
     console.log(path.relative(root, finalArchive));

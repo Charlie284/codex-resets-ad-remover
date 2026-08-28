@@ -10,6 +10,17 @@
 The release gate verifies that `manifest.json` is at the archive root, rejects
 unexpected files, and compares every packaged file byte-for-byte with source.
 
+## GitHub self-distribution
+
+1. Create a `v1.0.0` release from the verified `main` commit.
+2. Attach the Chrome ZIP, Firefox ZIP, and `SHA256SUMS.txt` from `dist/`.
+3. Use `store/github-release.md` as the release description.
+4. Mark the Chrome ZIP as an unpacked developer-mode installation.
+5. Mark the unsigned Firefox ZIP as source/testing material, not a persistent
+   Firefox or Zen installation.
+6. When Mozilla returns a signed XPI, test it in Firefox and Zen and attach it
+   to the release as the persistent-install option.
+
 ## Chrome Web Store
 
 1. Upload the generated Chrome ZIP.
