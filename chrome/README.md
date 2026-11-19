@@ -11,5 +11,11 @@
 To pick up local changes, select the extension's reload button on
 `chrome://extensions`, then reload the website.
 
-For a store-ready ZIP, run `npm run package` from the repository root. The
-generated archive is written to `dist/` with `manifest.json` at its root.
+For a store-upload ZIP, run `npm run package` then `npm run verify:packages`
+from the repository root (Node.js 18+, npm, `zip`, and `unzip` required). The
+archive is `dist/codex-resets-ad-remover-chrome-<version>.zip`, with
+`manifest.json` at its root. Packaging does not upload or publish it; follow the
+[release checklist](../store/README.md) before submission.
+
+This extension hides sponsor elements with CSS; it does not block network
+requests. See the [root README](../README.md) for scope and development checks.

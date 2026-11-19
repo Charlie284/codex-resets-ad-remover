@@ -2,6 +2,16 @@
 
 ## Local release candidate
 
+Run commands from the repository root with Node.js 18+, npm, `zip`, and `unzip`.
+The offline cycle is `npm test`, `npm run package`, then
+`npm run verify:packages`; no npm dependencies need installing. The online gate
+also fetches the live site and runs `npx --yes web-ext lint`, which may download
+the linter. It stops at the first failure.
+
+For version bumps, update both manifests, `package.json`, version assertions in
+`tests/static.test.mjs`, and versioned release copy/checklist examples below.
+Archive filenames use each manifest's version, not `package.json`.
+
 1. Run `npm run release:check` while online.
 2. Confirm that `dist/SHA256SUMS.txt` contains both upload archives.
 3. Load each packaged build in its target browser and verify the live site at
@@ -9,6 +19,12 @@
 
 The release gate verifies that `manifest.json` is at the archive root, rejects
 unexpected files, and compares every packaged file byte-for-byte with source.
+Each ZIP contains only the manifest, stylesheet, five icons, and root `LICENSE`.
+Documentation and store artwork are excluded.
+
+Extract Chrome's ZIP for **Load unpacked**; extract Firefox's ZIP and select
+its manifest for temporary installation. The live HTML test only checks class
+presence, not rendered behavior; it does not replace the browser checks above.
 
 ## GitHub self-distribution
 
